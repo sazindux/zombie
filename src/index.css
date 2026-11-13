@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: Impact, Haettenschweiler, "Arial Narrow Bold", "Franklin Gothic Heavy", "Arial Black", sans-serif;
+  --font-body: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  background: #000;
+  overflow: hidden;
+  font-family: var(--font-body);
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+canvas {
+  display: block;
+  touch-action: none;
+}
+
+@keyframes banner-in {
+  0% { opacity: 0; transform: scale(1.5); letter-spacing: 0.4em; }
+  14% { opacity: 1; transform: scale(1); letter-spacing: 0.12em; }
+  78% { opacity: 1; transform: scale(1.02); letter-spacing: 0.14em; }
+  100% { opacity: 0; transform: scale(1.08); letter-spacing: 0.2em; }
+}
+.animate-banner {
+  animation: banner-in 2.7s ease-out forwards;
+}
+
+@keyframes title-flicker {
+  0%, 100% { opacity: 1; }
+  41% { opacity: 1; }
+  42% { opacity: 0.55; }
+  43% { opacity: 1; }
+  45% { opacity: 0.7; }
+  46% { opacity: 1; }
+  88% { opacity: 1; }
+  89% { opacity: 0.4; }
+  90% { opacity: 1; }
+}
+.animate-flicker {
+  animation: title-flicker 5s infinite;
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up {
+  animation: fade-up 0.45s ease-out both;
+}
+
+@keyframes pulse-red {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.6); }
+  50% { box-shadow: 0 0 22px 4px rgba(220, 38, 38, 0.55); }
+}
+.animate-pulse-red {
+  animation: pulse-red 1.4s ease-in-out infinite;
+}
+
+@keyframes pop {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.25); }
+  100% { transform: scale(1); }
+}
+
+.text-outline {
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.7), 0 0 14px rgba(0, 0, 0, 0.8);
+}
+
+.scanlines::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.18) 0px, rgba(0, 0, 0, 0.18) 1px, transparent 1px, transparent 3px);
+  mix-blend-mode: multiply;
+}
+
+.shop-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+.shop-scroll::-webkit-scrollbar-thumb {
+  background: #5a1a16;
+  border-radius: 4px;
+}
